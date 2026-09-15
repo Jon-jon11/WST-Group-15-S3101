@@ -1,190 +1,20 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-
-    <link rel="stylesheet" href="style.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="GovReady helps Filipinos prepare the right documents, fees, and steps for common government ID applications."
+    />
+    <meta name="theme-color" content="#003366" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <title>GovReady - Government Document Requirement Checker</title>
-    <!-- 
-        ============================================================
-        HOMEWORK 2: INITIAL HTML STRUCTURE
-        ============================================================
-        Topic: Government Document Requirement Checker
-        Purpose: Users select their purpose, age, status, and 
-        first-time status to generate a personalized checklist.
-        ============================================================
-    -->
-</head>
-<body>
-
-    <!-- ==========================================================
-    HEADER & NAVIGATION (Step 4: Organize content)
-    ========================================================== -->
-    <header>
-        <!-- Logo / Website Title -->
-        <div>
-            <img src="https://via.placeholder.com/60x60?text=GovReady">
-            <h1>GovReady</h1>
-            
-        </div>
- </header>
-    <p>Your Government Document Requirement Checklist</p>
-            <img src="https://via.placeholder.com/60x60?text=GovReady" alt="GovReady - Government Document Helper">
-            <h1>GovReady</h1>
-            <p>Your Government Document Requirement Checklist</p>
-        </div>
-        <!-- Navigation Links -->
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="checker.html">Requirement Checker</a></li>
-                <li><a href="guides.html">How-To Guides</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="#contact">Contact Support</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- ==========================================================
-    MAIN CONTENT (Step 3: Primary webpage structure)
-    ========================================================== -->
-    <main>
-
-        <!-- === SECTION 1: The Interactive Checker (Form area) === -->
-        <section id="checker">
-            <h2>Check Your Requirements</h2>
-            <p>Fill out the details below to get a personalized checklist for your government document application.</p>
-
-            <!-- 
-                Step 5: Add User Interaction Areas 
-                This form contains 4 key interaction areas:
-                1. Purpose (dropdown)
-                2. Age (number input)
-                3. Status (dropdown)
-                4. First-time applicant (radio buttons)
-            -->
-            <form action="#" method="get" id="requirementForm">
-                
-                <!-- Interaction Area 1: Purpose -->
-                <fieldset>
-                    <legend>Application Purpose</legend>
-                    <label for="purpose">What document are you applying for?</label>
-                    <select id="purpose" name="purpose">
-                        <option value="drivers_license">Apply for Driver's License</option>
-                        <option value="passport">Apply for Passport</option>
-                        <option value="philhealth">Apply for PhilHealth ID</option>
-                        <option value="national_id">Apply for National ID (PhilSys)</option>
-                        <option value="postal_id">Apply for Postal ID</option>
-                    </select>
-                </fieldset>
-
-                <!-- Interaction Area 2: Age -->
-                <fieldset>
-                    <legend>Personal Details</legend>
-                    <label for="age">Age:</label>
-                    <input type="number" id="age" name="age" min="0" max="120" placeholder="Enter your age" required>
-                </fieldset>
-
-                <!-- Interaction Area 3: Status -->
-                <fieldset>
-                    <legend>Employment / Civil Status</legend>
-                    <label for="status">Current Status:</label>
-                    <select id="status" name="status">
-                        <option value="student">Student</option>
-                        <option value="employed">Employed (Private)</option>
-                        <option value="government">Government Employee</option>
-                        <option value="self_employed">Self-Employed</option>
-                        <option value="unemployed">Unemployed</option>
-                        <option value="ofw">Overseas Filipino Worker (OFW)</option>
-                    </select>
-                </fieldset>
-
-                <!-- Interaction Area 4: First-time Applicant -->
-                <fieldset>
-                    <legend>Applicant Type</legend>
-                    <p>Are you a first-time applicant?</p>
-                    <div>
-                        <input type="radio" id="firstTimeYes" name="firstTime" value="yes">
-                        <label for="firstTimeYes">Yes</label>
-                    </div>
-                    <div>
-                        <input type="radio" id="firstTimeNo" name="firstTime" value="no">
-                        <label for="firstTimeNo">No (Renewal)</label>
-                    </div>
-                </fieldset>
-
-                <!-- Submit Button (Step 5: Buttons) -->
-                <button type="submit">Get My Requirements Checklist</button>
-            </form>
-        </section>
-
-        <!-- === SECTION 2: Generated Results Area (Static placeholder for now) === -->
-        <!-- 
-            Step 3 & 4: Grouped content inside <article> 
-            This represents the output area. 
-        -->
-        <article id="results">
-            <h2>📋 Your Personalized Checklist</h2>
-            <p><em>(This section will dynamically update based on selections in future milestones. Sample output.)</em></p>
-
-            <!-- Sample data for "Driver's License | Age 19 | Student | First-time" -->
-            <section>
-                <h3>Required Documents</h3>
-                <ul>
-                    <li><strong>Valid ID:</strong> School ID or Birth Certificate (PSA).</li>
-                    <li><strong>Medical Certificate:</strong> Required for student applicants under 18, but recommended for all.</li>
-                    <li><strong>Additional Document:</strong> Parent/Guardian Consent (if under 18) or Barangay Clearance.</li>
-                </ul>
-
-                <h3>Appointment & Fees</h3>
-                <ul>
-                    <li><strong>Appointment required?</strong> <span style="color: green;">Yes</span> (Book online via LTO portal).</li>
-                    <li><strong>Estimated Fees:</strong> ₱820.00 - ₱1,200.00 (includes application and computer fee).</li>
-                    <li><strong>Where to apply:</strong> Nearest LTO Licensing Center or District Office.</li>
-                </ul>
-            </section>
-        </article>
-
-        <!-- === ASIDE: Supporting Information (Step 4: <aside>) === -->
-        <aside>
-            <h3>💡 Quick Tips</h3>
-            <ul>
-                <li>Always bring an <strong>original</strong> and <strong>photocopy</strong> of your documents.</li>
-                <li>Check the official government website for the latest fee updates.</li>
-                <li>Processing times are faster during weekdays (Tuesday–Thursday).</li>
-            </ul>
-
-            <!-- Additional interaction area: Text area for user questions (Step 5) -->
-            <h3>❓ Have a specific question?</h3>
-            <form action="#">
-                <label for="userQuestion">Ask us about your document requirements:</label>
-                <textarea id="userQuestion" name="userQuestion" rows="3" placeholder="Type your question here..."></textarea>
-                <button type="submit">Send Question</button>
-            </form>
-        </aside>
-
-    </main>
-
-    <!-- ==========================================================
-    FOOTER (Step 4: <footer>)
-    ========================================================== -->
-    <footer>
-        <div>
-            <p>&copy; 2026 GovReady. All rights reserved.</p>
-            <p>
-                <strong>Disclaimer:</strong> This is an educational project. Always verify final requirements 
-                with the official government agency.
-            </p>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#privacy">Privacy Policy</a></li>
-                <li><a href="#terms">Terms of Use</a></li>
-                <li><a href="#contact">Contact Us</a></li>
-            </ul>
-        </nav>
-    </footer>
-
-</body>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>

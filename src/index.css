@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --color-primary: #003366;
+  --color-primary-dark: #00264d;
+  --color-primary-light: #004d99;
+  --color-secondary: #0066cc;
+  --color-secondary-dark: #0052a3;
+  --color-secondary-soft: #e8f1fb;
+  --color-accent: #ff6600;
+  --color-accent-soft: #fff1e6;
+  --color-surface: #f5f7fa;
+  --color-ink: #1a1a1a;
+}
+
+@layer base {
+  html {
+    @apply scroll-pt-24;
+  }
+
+  body {
+    @apply bg-surface font-sans text-ink antialiased;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    @apply bg-secondary/20;
+  }
+}
