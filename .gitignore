@@ -1,10 +1,9 @@
+# Left over from the old React/Vite setup - keep ignored so nobody commits them
 node_modules
 dist
-dist-ssr
-*.local
-*.log
 
 .DS_Store
 .vscode/*
 !.vscode/extensions.json
 .idea
+*.log

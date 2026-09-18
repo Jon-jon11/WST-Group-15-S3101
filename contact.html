@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Contact the GovReady team with questions about Philippine government document requirements."
+    />
+    <meta name="theme-color" content="#003366" />
+    <link rel="icon" href="favicon.ico" sizes="48x48" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/pages.css" />
+    <title>Contact Support - GovReady</title>
+  </head>
+  <body data-page="contact">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header class="site-header">
+      <div class="container site-header__inner">
+        <a class="site-logo" href="index.html">
+          <img src="assets/govready-logo.png" alt="GovReady home" width="514" height="192" />
+        </a>
+
+        <nav class="primary-nav" aria-label="Main">
+          <ul class="primary-nav__list">
+            <li><a class="primary-nav__link" href="index.html" data-nav="home">Home</a></li>
+            <li><a class="primary-nav__link" href="index.html#checker" data-nav="checker">Requirement Checker</a></li>
+            <li><a class="primary-nav__link" href="guides.html">How-To Guides</a></li>
+            <li><a class="primary-nav__link" href="about.html">About Us</a></li>
+            <li><a class="primary-nav__link" href="contact.html" aria-current="page">Contact Support</a></li>
+          </ul>
+        </nav>
+
+        <button class="menu-toggle" type="button" id="menu-toggle" aria-controls="mobile-menu" aria-expanded="false">
+          <span class="icon icon--lg" data-icon="menu"></span>
+          <span class="sr-only">Open menu</span>
+        </button>
+      </div>
+
+      <nav class="mobile-menu" id="mobile-menu" aria-label="Main" hidden>
+        <ul class="mobile-menu__list">
+          <li>
+            <a class="mobile-menu__link" href="index.html" data-nav="home">
+              <span class="icon" data-icon="house"></span>
+              <span class="mobile-menu__label">Home</span>
+              <span class="icon icon--sm mobile-menu__chevron" data-icon="chevron-right"></span>
+            </a>
+          </li>
+          <li>
+            <a class="mobile-menu__link" href="index.html#checker" data-nav="checker">
+              <span class="icon" data-icon="clipboard-check"></span>
+              <span class="mobile-menu__label">Requirement Checker</span>
+              <span class="icon icon--sm mobile-menu__chevron" data-icon="chevron-right"></span>
+            </a>
+          </li>
+          <li>
+            <a class="mobile-menu__link" href="guides.html">
+              <span class="icon" data-icon="book-open"></span>
+              <span class="mobile-menu__label">How-To Guides</span>
+              <span class="icon icon--sm mobile-menu__chevron" data-icon="chevron-right"></span>
+            </a>
+          </li>
+          <li>
+            <a class="mobile-menu__link" href="about.html">
+              <span class="icon" data-icon="info"></span>
+              <span class="mobile-menu__label">About Us</span>
+              <span class="icon icon--sm mobile-menu__chevron" data-icon="chevron-right"></span>
+            </a>
+          </li>
+          <li>
+            <a class="mobile-menu__link" href="contact.html" aria-current="page">
+              <span class="icon" data-icon="life-buoy"></span>
+              <span class="mobile-menu__label">Contact Support</span>
+              <span class="icon icon--sm mobile-menu__chevron" data-icon="chevron-right"></span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <div class="menu-overlay" id="menu-overlay" hidden></div>
+
+    <main class="site-main" id="main-content" tabindex="-1">
+      <div class="page-header">
+        <div class="container">
+          <nav aria-label="Breadcrumb">
+            <ol class="breadcrumb">
+              <li><a href="index.html">Home</a></li>
+              <li aria-hidden="true"><span class="icon icon--sm" data-icon="chevron-right"></span></li>
+              <li class="breadcrumb__current" aria-current="page">Contact Support</li>
+            </ol>
+          </nav>
+          <h1 class="page-header__title">Contact Support</h1>
+          <p class="page-header__description">
+            Have a question about your document requirements? Send us a message and our team will help point you in the
+            right direction.
+          </p>
+        </div>
+      </div>
+
+      <div class="page">
+        <div class="container">
+          <div class="contact-grid">
+            <section class="card contact-grid__main" aria-labelledby="contact-form-heading">
+              <h2 class="card__title" id="contact-form-heading">Send Us a Message</h2>
+              <p class="card__intro">
+                Include the document you're applying for and any details that will help us understand your question.
+              </p>
+
+              <div class="card__body" data-message-form>
+                <form novalidate>
+                  <div class="field">
+                    <label class="field__label" for="contact-name">Full name</label>
+                    <input
+                      class="input"
+                      id="contact-name"
+                      name="name"
+                      type="text"
+                      autocomplete="name"
+                      aria-describedby="contact-name-error"
+                      data-required-message="Enter your name."
+                    />
+                    <p class="field__error" id="contact-name-error" hidden>
+                      <span class="icon icon--sm" data-icon="circle-alert"></span>
+                      <span data-error-text></span>
+                    </p>
+                  </div>
+
+                  <div class="field">
+                    <label class="field__label" for="contact-email">Email address</label>
+                    <input
+                      class="input"
+                      id="contact-email"
+                      name="email"
+                      type="email"
+                      autocomplete="email"
+                      inputmode="email"
+                      aria-describedby="contact-email-error"
+                      data-required-message="Enter your email address."
+                      data-invalid-message="Enter a valid email address, like juan@example.com."
+                    />
+                    <p class="field__error" id="contact-email-error" hidden>
+                      <span class="icon icon--sm" data-icon="circle-alert"></span>
+                      <span data-error-text></span>
+                    </p>
+                  </div>
+
+                  <div class="field">
+                    <label class="field__label" for="contact-message">Your message</label>
+                    <textarea
+                      class="textarea"
+                      id="contact-message"
+                      name="message"
+                      rows="6"
+                      placeholder="Describe your question or concern..."
+                      aria-describedby="contact-message-error"
+                      data-required-message="Enter your message before sending."
+                    ></textarea>
+                    <p class="field__error" id="contact-message-error" hidden>
+                      <span class="icon icon--sm" data-icon="circle-alert"></span>
+                      <span data-error-text></span>
+                    </p>
+                  </div>
+
+                  <div class="form-actions">
+                    <button class="btn btn--primary btn--full" type="submit">
+                      <span class="icon icon--sm" data-icon="send"></span>
+                      Send Message
+                    </button>
+                  </div>
+                </form>
+
+                <div class="form-success" role="status" hidden data-message-success>
+                  <span class="icon" data-icon="circle-check"></span>
+                  <div>
+                    <p class="form-success__title">Thanks for reaching out!</p>
+                    <p class="form-success__text">
+                      Your message has been received. We'll reply to the email address you provided.
+                    </p>
+                    <button class="form-success__reset" type="button" data-message-reset>Send another message</button>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <aside class="contact-grid__aside stack" aria-label="More ways to get help">
+              <section class="card card--tight" aria-labelledby="self-service-heading">
+                <h2 class="card__title" id="self-service-heading">Find Answers Faster</h2>
+                <ul class="stacked-list">
+                  <li>
+                    <a class="link-row" href="index.html#checker">
+                      <span class="link-row__icon"><span class="icon" data-icon="clipboard-check"></span></span>
+                      <span class="link-row__body">
+                        <span class="link-row__title">Requirement Checker</span>
+                        <span class="link-row__text">Get a checklist for your situation</span>
+                      </span>
+                      <span class="icon link-row__chevron" data-icon="chevron-right"></span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="link-row" href="guides.html">
+                      <span class="link-row__icon"><span class="icon" data-icon="book-open"></span></span>
+                      <span class="link-row__body">
+                        <span class="link-row__title">How-To Guides</span>
+                        <span class="link-row__text">Follow step-by-step application guides</span>
+                      </span>
+                      <span class="icon link-row__chevron" data-icon="chevron-right"></span>
+                    </a>
+                  </li>
+                </ul>
+              </section>
+
+              <section class="card card--tight" aria-labelledby="agency-links-heading">
+                <h2 class="card__title" id="agency-links-heading">Official Agency Websites</h2>
+                <p class="card__note">
+                  GovReady is not affiliated with any government agency. For official concerns, contact the issuing
+                  agency directly.
+                </p>
+                <ul class="agency-list" id="agency-list"></ul>
+              </section>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="site-footer__grid">
+          <div class="site-footer__brand">
+            <p class="site-footer__brand-name">GovReady</p>
+            <p class="site-footer__tagline">Your Government Document Requirement Checklist</p>
+            <p class="site-footer__disclaimer">
+              <strong>Disclaimer:</strong> This is an educational project. Always verify final requirements with the
+              official government agency.
+            </p>
+          </div>
+
+          <div class="site-footer__links">
+            <div>
+              <h2 class="footer-links__title">Explore</h2>
+              <ul class="footer-links__list">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#checker">Requirement Checker</a></li>
+                <li><a href="guides.html">How-To Guides</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Support</a></li>
+              </ul>
+            </div>
+            <div>
+              <h2 class="footer-links__title">Support</h2>
+              <ul class="footer-links__list">
+                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li><a href="terms.html">Terms of Use</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="site-footer__bottom">
+          <p>&copy; <span id="current-year">2026</span> GovReady. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/icons.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/site.js"></script>
+    <script src="js/message-form.js"></script>
+    <script src="js/contact.js"></script>
+  </body>
+</html>

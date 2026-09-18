@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -8,13 +8,349 @@
       content="GovReady helps Filipinos prepare the right documents, fees, and steps for common government ID applications."
     />
     <meta name="theme-color" content="#003366" />
-    <link rel="icon" href="/favicon.ico" sizes="48x48" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="icon" href="favicon.ico" sizes="48x48" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/pages.css" />
     <title>GovReady - Government Document Requirement Checker</title>
   </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+  <body data-page="home">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header class="site-header">
+      <div class="container site-header__inner">
+        <a class="site-logo" href="index.html">
+          <img src="assets/govready-logo.png" alt="GovReady home" width="514" height="192" />
+        </a>
+
+        <nav class="primary-nav" aria-label="Main">
+          <ul class="primary-nav__list">
+            <li><a class="primary-nav__link" href="index.html" data-nav="home">Home</a></li>
+            <li><a class="primary-nav__link" href="index.html#checker" data-nav="checker">Requirement Checker</a></li>
+            <li><a class="primary-nav__link" href="guides.html">How-To Guides</a></li>
+            <li><a class="primary-nav__link" href="about.html">About Us</a></li>
+            <li><a class="primary-nav__link" href="contact.html">Contact Support</a></li>
+          </ul>
+        </nav>
+
+        <button class="menu-toggle" type="button" id="menu-toggle" aria-controls="mobile-menu" aria-expanded="false">
+          <span class="icon icon--lg" data-icon="menu"></span>
+          <span class="sr-only">Open menu</span>
+        </button>
+      </div>
+
+      <nav class="mobile-menu" id="mobile-menu" aria-label="Main" hidden>
+        <ul class="mobile-menu__list">
+          <li>
+            <a class="mobile-menu__link" href="index.html" data-nav="home">
+              <span class="icon" data-icon="house"></span>
+              <span class="mobile-menu__label">Home</span>
+              <span class="icon icon--sm mobile-menu__chevron" data-icon="chevron-right"></span>
+            </a>
+          </li>
+          <li>
+            <a class="mobile-menu__link" href="index.html#checker" data-nav="checker">
+              <span class="icon" data-icon="clipboard-check"></span>
+              <span class="mobile-menu__label">Requirement Checker</span>
+              <span class="icon icon--sm mobile-menu__chevron" data-icon="chevron-right"></span>
+            </a>
+          </li>
+          <li>
+            <a class="mobile-menu__link" href="guides.html">
+              <span class="icon" data-icon="book-open"></span>
+              <span class="mobile-menu__label">How-To Guides</span>
+              <span class="icon icon--sm mobile-menu__chevron" data-icon="chevron-right"></span>
+            </a>
+          </li>
+          <li>
+            <a class="mobile-menu__link" href="about.html">
+              <span class="icon" data-icon="info"></span>
+              <span class="mobile-menu__label">About Us</span>
+              <span class="icon icon--sm mobile-menu__chevron" data-icon="chevron-right"></span>
+            </a>
+          </li>
+          <li>
+            <a class="mobile-menu__link" href="contact.html">
+              <span class="icon" data-icon="life-buoy"></span>
+              <span class="mobile-menu__label">Contact Support</span>
+              <span class="icon icon--sm mobile-menu__chevron" data-icon="chevron-right"></span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <div class="menu-overlay" id="menu-overlay" hidden></div>
+
+    <main class="site-main" id="main-content" tabindex="-1">
+      <div class="page-header">
+        <div class="container">
+          <h1 class="page-header__title">Your Government Document Requirement Checklist</h1>
+          <p class="page-header__description">
+            Answer four quick questions to see the documents, fees, and appointment details you need before visiting a
+            government office.
+          </p>
+          <div class="page-header__chips">
+            <span class="page-header__chips-label">Supported documents:</span>
+            <span class="chip-on-dark">Driver's License</span>
+            <span class="chip-on-dark">Passport</span>
+            <span class="chip-on-dark">PhilHealth ID</span>
+            <span class="chip-on-dark">National ID (PhilSys)</span>
+            <span class="chip-on-dark">Postal ID</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="page">
+        <div class="container stack">
+          <div class="checker-grid">
+            <section class="card checker-grid__form" id="checker" aria-labelledby="checker-heading">
+              <h2 class="card__title" id="checker-heading" tabindex="-1">Check Your Requirements</h2>
+              <p class="card__intro">
+                Fill out the details below to get a personalized checklist for your government document application.
+              </p>
+
+              <form class="requirement-form" id="requirement-form" novalidate>
+                <div class="form-step">
+                  <fieldset>
+                    <legend>
+                      <span class="form-step__legend">
+                        <span class="form-step__number">1</span>
+                        Application Purpose
+                      </span>
+                    </legend>
+                    <div class="field">
+                      <label class="field__label" for="purpose">What document are you applying for?</label>
+                      <div class="select-wrapper">
+                        <select class="select" id="purpose" name="purpose"></select>
+                        <span class="icon" data-icon="chevron-down"></span>
+                      </div>
+                    </div>
+                  </fieldset>
+                </div>
+
+                <div class="form-step">
+                  <fieldset>
+                    <legend>
+                      <span class="form-step__legend">
+                        <span class="form-step__number">2</span>
+                        Personal Details
+                      </span>
+                    </legend>
+                    <div class="field">
+                      <label class="field__label" for="age">Age</label>
+                      <input
+                        class="input input--narrow"
+                        id="age"
+                        name="age"
+                        type="number"
+                        inputmode="numeric"
+                        min="0"
+                        max="120"
+                        placeholder="Enter your age"
+                        aria-describedby="age-error"
+                      />
+                      <p class="field__error" id="age-error" hidden>
+                        <span class="icon icon--sm" data-icon="circle-alert"></span>
+                        <span data-error-text></span>
+                      </p>
+                    </div>
+                  </fieldset>
+                </div>
+
+                <div class="form-step">
+                  <fieldset>
+                    <legend>
+                      <span class="form-step__legend">
+                        <span class="form-step__number">3</span>
+                        Employment / Civil Status
+                      </span>
+                    </legend>
+                    <div class="field">
+                      <label class="field__label" for="status">Current Status</label>
+                      <div class="select-wrapper">
+                        <select class="select" id="status" name="status"></select>
+                        <span class="icon" data-icon="chevron-down"></span>
+                      </div>
+                    </div>
+                  </fieldset>
+                </div>
+
+                <div class="form-step">
+                  <fieldset aria-describedby="applicant-type-question applicant-type-error">
+                    <legend>
+                      <span class="form-step__legend">
+                        <span class="form-step__number">4</span>
+                        Applicant Type
+                      </span>
+                    </legend>
+                    <p class="form-step__question" id="applicant-type-question">Are you a first-time applicant?</p>
+                    <div class="choices" id="applicant-type-choices">
+                      <label class="choice">
+                        <input type="radio" name="firstTime" value="yes" />
+                        <span>
+                          <span class="choice__label">Yes</span>
+                          <span class="choice__hint">This is my first application</span>
+                        </span>
+                      </label>
+                      <label class="choice">
+                        <input type="radio" name="firstTime" value="no" />
+                        <span>
+                          <span class="choice__label">No (Renewal)</span>
+                          <span class="choice__hint">I've been issued this document before</span>
+                        </span>
+                      </label>
+                    </div>
+                    <p class="field__error" id="applicant-type-error" hidden>
+                      <span class="icon icon--sm" data-icon="circle-alert"></span>
+                      <span data-error-text></span>
+                    </p>
+                  </fieldset>
+                </div>
+
+                <div class="requirement-form__actions">
+                  <button class="btn btn--primary btn--lg btn--full" type="submit">
+                    Get My Requirements Checklist
+                    <span class="icon btn__icon-wide" data-icon="arrow-right"></span>
+                  </button>
+                </div>
+              </form>
+            </section>
+
+            <article class="card checker-grid__results" id="results" aria-labelledby="results-heading">
+              <h2 class="results__title" id="results-heading" tabindex="-1">
+                <span class="icon icon--lg" data-icon="clipboard-list"></span>
+                Your Personalized Checklist
+              </h2>
+
+              <div id="results-body">
+                <div class="empty-state">
+                  <span class="empty-state__icon">
+                    <span class="icon icon--xl" data-icon="file-search"></span>
+                  </span>
+                  <p class="empty-state__title">Your checklist will appear here</p>
+                  <p class="empty-state__text">
+                    Complete the form to see the required documents, estimated fees, and where to apply.
+                  </p>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <aside class="aside-grid" aria-label="Tips and questions">
+            <section class="tips-card" aria-labelledby="tips-heading">
+              <h2 class="card__title" id="tips-heading">
+                <span class="card__icon card__icon--accent"><span class="icon" data-icon="lightbulb"></span></span>
+                Quick Tips
+              </h2>
+              <ul class="tips-list">
+                <li>
+                  <span class="icon icon--sm" data-icon="arrow-right"></span>
+                  <span>Always bring an <strong>original</strong> and <strong>photocopy</strong> of your documents.</span>
+                </li>
+                <li>
+                  <span class="icon icon--sm" data-icon="arrow-right"></span>
+                  <span>Check the official government website for the latest fee updates.</span>
+                </li>
+                <li>
+                  <span class="icon icon--sm" data-icon="arrow-right"></span>
+                  <span>Processing times are faster during weekdays (Tuesday&ndash;Thursday).</span>
+                </li>
+              </ul>
+            </section>
+
+            <section class="card" aria-labelledby="question-heading">
+              <h2 class="card__title" id="question-heading">
+                <span class="card__icon"><span class="icon" data-icon="message-circle"></span></span>
+                Have a Specific Question?
+              </h2>
+
+              <div class="card__body" data-message-form>
+                <form novalidate>
+                  <div class="field">
+                    <label class="field__label" for="home-question">Ask us about your document requirements:</label>
+                    <textarea
+                      class="textarea"
+                      id="home-question"
+                      name="message"
+                      rows="3"
+                      placeholder="Type your question here..."
+                      aria-describedby="home-question-error"
+                      data-required-message="Enter your message before sending."
+                    ></textarea>
+                    <p class="field__error" id="home-question-error" hidden>
+                      <span class="icon icon--sm" data-icon="circle-alert"></span>
+                      <span data-error-text></span>
+                    </p>
+                  </div>
+                  <div class="form-actions">
+                    <button class="btn btn--primary btn--full" type="submit">
+                      <span class="icon icon--sm" data-icon="send"></span>
+                      Send Question
+                    </button>
+                  </div>
+                </form>
+
+                <div class="form-success" role="status" hidden data-message-success>
+                  <span class="icon" data-icon="circle-check"></span>
+                  <div>
+                    <p class="form-success__title">Thanks for reaching out!</p>
+                    <p class="form-success__text">Your message has been received.</p>
+                    <button class="form-success__reset" type="button" data-message-reset>Send another message</button>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </aside>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="site-footer__grid">
+          <div class="site-footer__brand">
+            <p class="site-footer__brand-name">GovReady</p>
+            <p class="site-footer__tagline">Your Government Document Requirement Checklist</p>
+            <p class="site-footer__disclaimer">
+              <strong>Disclaimer:</strong> This is an educational project. Always verify final requirements with the
+              official government agency.
+            </p>
+          </div>
+
+          <div class="site-footer__links">
+            <div>
+              <h2 class="footer-links__title">Explore</h2>
+              <ul class="footer-links__list">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#checker">Requirement Checker</a></li>
+                <li><a href="guides.html">How-To Guides</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Support</a></li>
+              </ul>
+            </div>
+            <div>
+              <h2 class="footer-links__title">Support</h2>
+              <ul class="footer-links__list">
+                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li><a href="terms.html">Terms of Use</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="site-footer__bottom">
+          <p>&copy; <span id="current-year">2026</span> GovReady. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/icons.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/checklist.js"></script>
+    <script src="js/site.js"></script>
+    <script src="js/message-form.js"></script>
+    <script src="js/checker.js"></script>
   </body>
 </html>

@@ -1,6 +1,4 @@
-import { Car, HeartPulse, IdCard, Mail, Plane } from 'lucide-react'
-
-export const STATUS_OPTIONS = [
+const STATUS_OPTIONS = [
   { value: 'student', label: 'Student' },
   { value: 'employed', label: 'Employed (Private)' },
   { value: 'government', label: 'Government Employee' },
@@ -295,12 +293,12 @@ function postalIdChecklist({ age, isFirstTime }) {
   }
 }
 
-export const DOCUMENT_TYPES = [
+const DOCUMENT_TYPES = [
   {
     id: 'drivers_license',
     name: "Driver's License",
     optionLabel: "Apply for Driver's License",
-    icon: Car,
+    iconKey: 'car',
     agency: 'Land Transportation Office (LTO)',
     agencyShort: 'LTO',
     website: { label: 'LTO LTMS Portal', url: 'https://portal.lto.gov.ph' },
@@ -346,7 +344,7 @@ export const DOCUMENT_TYPES = [
     id: 'passport',
     name: 'Passport',
     optionLabel: 'Apply for Passport',
-    icon: Plane,
+    iconKey: 'plane',
     agency: 'Department of Foreign Affairs (DFA)',
     agencyShort: 'DFA',
     website: { label: 'DFA Passport Appointment', url: 'https://www.passport.gov.ph' },
@@ -387,7 +385,7 @@ export const DOCUMENT_TYPES = [
     id: 'philhealth',
     name: 'PhilHealth ID',
     optionLabel: 'Apply for PhilHealth ID',
-    icon: HeartPulse,
+    iconKey: 'heart-pulse',
     agency: 'Philippine Health Insurance Corporation (PhilHealth)',
     agencyShort: 'PhilHealth',
     website: { label: 'PhilHealth Website', url: 'https://www.philhealth.gov.ph' },
@@ -435,7 +433,7 @@ export const DOCUMENT_TYPES = [
     id: 'national_id',
     name: 'National ID (PhilSys)',
     optionLabel: 'Apply for National ID (PhilSys)',
-    icon: IdCard,
+    iconKey: 'id-card',
     agency: 'Philippine Statistics Authority (PSA)',
     agencyShort: 'PhilSys',
     website: { label: 'PhilSys Website', url: 'https://philsys.gov.ph' },
@@ -474,7 +472,7 @@ export const DOCUMENT_TYPES = [
     id: 'postal_id',
     name: 'Postal ID',
     optionLabel: 'Apply for Postal ID',
-    icon: Mail,
+    iconKey: 'mail',
     agency: 'Philippine Postal Corporation (PHLPost)',
     agencyShort: 'PHLPost',
     website: { label: 'PHLPost Website', url: 'https://www.phlpost.gov.ph' },
