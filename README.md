@@ -102,20 +102,6 @@ Notes:
 | `PUT /api/content` | Needs the admin token. Body: `{ original, replacement }`. An empty replacement, or one equal to the original, removes the edit. Up to 1000 characters per text and 500 edits. |
 | `GET /api/admin/check` | Needs the admin token. Returns `204` if it is correct (used by the admin page to unlock). |
 
-## Testing
-
-```bash
-npm test
-```
-
-The 51 automated tests cover:
-- **Messages:** valid and invalid submissions, malformed and oversized requests, simultaneous submissions, the token check, and the rate limit.
-- **Shared form rules:** the browser and the server give the same answer for the same input.
-- **Shared header and footer:** every page matches `partials/` and marks only its own link as the current page.
-- **Content editing:** the token requirement, saving and resetting edits, persistence, invalid input, the edit cap, and the edited text being applied (and escaped) in the checklist code.
-- **Security:** server files (`server.js`, `package.json`, `data/`) are not downloadable.
-
-They use temporary files, so they never touch your real `data/` folder.
 
 ## Scope and limitations
 
