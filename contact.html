@@ -16,6 +16,7 @@
     <title>Contact Support - GovReady</title>
   </head>
   <body data-page="contact">
+    <!-- partial:header -->
     <a class="skip-link" href="#main-content">Skip to main content</a>
 
     <header class="site-header">
@@ -81,6 +82,7 @@
       </nav>
     </header>
     <div class="menu-overlay" id="menu-overlay" hidden></div>
+    <!-- /partial:header -->
 
     <main class="site-main" id="main-content" tabindex="-1">
       <div class="page-header">
@@ -109,7 +111,7 @@
                 Include the document you're applying for and any details that will help us understand your question.
               </p>
 
-              <div class="card__body" data-message-form>
+              <div class="card__body" data-message-form data-message-source="contact">
                 <form novalidate>
                   <div class="field">
                     <label class="field__label" for="contact-name">Full name</label>
@@ -120,7 +122,6 @@
                       type="text"
                       autocomplete="name"
                       aria-describedby="contact-name-error"
-                      data-required-message="Enter your name."
                     />
                     <p class="field__error" id="contact-name-error" hidden>
                       <span class="icon icon--sm" data-icon="circle-alert"></span>
@@ -138,8 +139,6 @@
                       autocomplete="email"
                       inputmode="email"
                       aria-describedby="contact-email-error"
-                      data-required-message="Enter your email address."
-                      data-invalid-message="Enter a valid email address, like juan@example.com."
                     />
                     <p class="field__error" id="contact-email-error" hidden>
                       <span class="icon icon--sm" data-icon="circle-alert"></span>
@@ -156,13 +155,17 @@
                       rows="6"
                       placeholder="Describe your question or concern..."
                       aria-describedby="contact-message-error"
-                      data-required-message="Enter your message before sending."
                     ></textarea>
                     <p class="field__error" id="contact-message-error" hidden>
                       <span class="icon icon--sm" data-icon="circle-alert"></span>
                       <span data-error-text></span>
                     </p>
                   </div>
+
+                  <p class="form-alert" role="alert" hidden data-message-error>
+                    <span class="icon icon--sm" data-icon="circle-alert"></span>
+                    <span data-error-text></span>
+                  </p>
 
                   <div class="form-actions">
                     <button class="btn btn--primary btn--full" type="submit">
@@ -177,7 +180,8 @@
                   <div>
                     <p class="form-success__title">Thanks for reaching out!</p>
                     <p class="form-success__text">
-                      Your message has been received. We'll reply to the email address you provided.
+                      Your message has been saved for our team to read. GovReady is a student project, so we may not
+                      be able to reply to every message.
                     </p>
                     <button class="form-success__reset" type="button" data-message-reset>Send another message</button>
                   </div>
@@ -226,6 +230,7 @@
       </div>
     </main>
 
+    <!-- partial:footer -->
     <footer class="site-footer">
       <div class="container">
         <div class="site-footer__grid">
@@ -265,10 +270,12 @@
         </div>
       </div>
     </footer>
+    <!-- /partial:footer -->
 
     <script src="js/icons.js"></script>
     <script src="js/data.js"></script>
     <script src="js/site.js"></script>
+    <script src="js/message-rules.js"></script>
     <script src="js/message-form.js"></script>
     <script src="js/contact.js"></script>
   </body>

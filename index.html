@@ -16,6 +16,7 @@
     <title>GovReady - Government Document Requirement Checker</title>
   </head>
   <body data-page="home">
+    <!-- partial:header -->
     <a class="skip-link" href="#main-content">Skip to main content</a>
 
     <header class="site-header">
@@ -81,6 +82,7 @@
       </nav>
     </header>
     <div class="menu-overlay" id="menu-overlay" hidden></div>
+    <!-- /partial:header -->
 
     <main class="site-main" id="main-content" tabindex="-1">
       <div class="page-header">
@@ -265,7 +267,7 @@
                 Have a Specific Question?
               </h2>
 
-              <div class="card__body" data-message-form>
+              <div class="card__body" data-message-form data-message-source="home">
                 <form novalidate>
                   <div class="field">
                     <label class="field__label" for="home-question">Ask us about your document requirements:</label>
@@ -276,13 +278,16 @@
                       rows="3"
                       placeholder="Type your question here..."
                       aria-describedby="home-question-error"
-                      data-required-message="Enter your message before sending."
                     ></textarea>
                     <p class="field__error" id="home-question-error" hidden>
                       <span class="icon icon--sm" data-icon="circle-alert"></span>
                       <span data-error-text></span>
                     </p>
                   </div>
+                  <p class="form-alert" role="alert" hidden data-message-error>
+                    <span class="icon icon--sm" data-icon="circle-alert"></span>
+                    <span data-error-text></span>
+                  </p>
                   <div class="form-actions">
                     <button class="btn btn--primary btn--full" type="submit">
                       <span class="icon icon--sm" data-icon="send"></span>
@@ -295,7 +300,7 @@
                   <span class="icon" data-icon="circle-check"></span>
                   <div>
                     <p class="form-success__title">Thanks for reaching out!</p>
-                    <p class="form-success__text">Your message has been received.</p>
+                    <p class="form-success__text">Your message has been saved for our team to read.</p>
                     <button class="form-success__reset" type="button" data-message-reset>Send another message</button>
                   </div>
                 </div>
@@ -306,6 +311,7 @@
       </div>
     </main>
 
+    <!-- partial:footer -->
     <footer class="site-footer">
       <div class="container">
         <div class="site-footer__grid">
@@ -345,11 +351,14 @@
         </div>
       </div>
     </footer>
+    <!-- /partial:footer -->
 
     <script src="js/icons.js"></script>
     <script src="js/data.js"></script>
+    <script src="js/content.js"></script>
     <script src="js/checklist.js"></script>
     <script src="js/site.js"></script>
+    <script src="js/message-rules.js"></script>
     <script src="js/message-form.js"></script>
     <script src="js/checker.js"></script>
   </body>

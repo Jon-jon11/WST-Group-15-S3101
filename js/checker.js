@@ -222,3 +222,4 @@ checkerForm.addEventListener('change', function (event) {
 })
 
 fillSelectOptions()
+loadContentEdits()

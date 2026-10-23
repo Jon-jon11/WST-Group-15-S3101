@@ -18,8 +18,8 @@ function guideCardMarkup(documentType) {
         '<li>' +
         '<span class="guide__step-number">' + (index + 1) + '</span>' +
         '<div class="guide__step-body">' +
-        '<h3>' + step.title + '</h3>' +
-        '<p>' + step.description + '</p>' +
+        '<h3>' + editableText(step.title) + '</h3>' +
+        '<p>' + editableText(step.description) + '</p>' +
         '</div>' +
         '</li>'
       )
@@ -35,7 +35,7 @@ function guideCardMarkup(documentType) {
     '<p class="guide__agency">' + documentType.agency + '</p>' +
     '</div>' +
     '</div>' +
-    '<p class="guide__summary">' + documentType.summary + '</p>' +
+    '<p class="guide__summary">' + editableText(documentType.summary) + '</p>' +
     '<ol class="guide__steps">' + steps + '</ol>' +
     '<div class="guide__actions">' +
     '<a class="btn btn--primary" href="index.html?document=' + documentType.id + '#checker">' +
@@ -52,7 +52,17 @@ function guideCardMarkup(documentType) {
 const guidesToc = document.getElementById('guides-toc')
 const guidesList = document.getElementById('guides-list')
 
-guidesToc.innerHTML = DOCUMENT_TYPES.map(guideTocMarkup).join('')
-guidesList.innerHTML = DOCUMENT_TYPES.map(guideCardMarkup).join('')
-renderIcons(guidesToc)
-renderIcons(guidesList)
+function renderGuides() {
+  guidesToc.innerHTML = DOCUMENT_TYPES.map(guideTocMarkup).join('')
+  guidesList.innerHTML = DOCUMENT_TYPES.map(guideCardMarkup).join('')
+  renderIcons(guidesToc)
+  renderIcons(guidesList)
+
+  /* Jump to the requested guide once it exists (guides.html#passport). */
+  if (window.location.hash) {
+    const target = document.getElementById(window.location.hash.slice(1))
+    if (target) target.scrollIntoView()
+  }
+}
+
+loadContentEdits().then(renderGuides)

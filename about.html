@@ -16,6 +16,7 @@
     <title>About Us - GovReady</title>
   </head>
   <body data-page="about">
+    <!-- partial:header -->
     <a class="skip-link" href="#main-content">Skip to main content</a>
 
     <header class="site-header">
@@ -81,6 +82,7 @@
       </nav>
     </header>
     <div class="menu-overlay" id="menu-overlay" hidden></div>
+    <!-- /partial:header -->
 
     <main class="site-main" id="main-content" tabindex="-1">
       <div class="page-header">
@@ -213,37 +215,35 @@
           <section id="team" aria-labelledby="team-heading">
             <div class="section-heading">
               <h2 id="team-heading">Meet the Team</h2>
-              <p>
-                GovReady is built by passionate developers and government experts dedicated to making document
-                requirements accessible.
-              </p>
+              <p>GovReady is built by Group 15 of S3101 as a Web Systems and Technology course project.</p>
             </div>
-            <div class="grid-cards grid-cards--3">
+            <div class="grid-cards grid-cards--4">
               <div class="card team-card">
-                <span class="team-card__avatar" aria-hidden="true">R</span>
+                <span class="team-card__avatar" aria-hidden="true">RB</span>
                 <div>
-                  <h3>Rai</h3>
-                  <p class="team-card__role">Programmer &amp; Web Developer</p>
-                  <p class="team-card__bio">
-                    Cybersecurity enthusiast and full-stack web developer with a passion for creating user-friendly
-                    applications.
-                  </p>
+                  <h3>Raiven Barolo</h3>
+                  <p class="team-card__role">UI/UX Designer &amp; Developer</p>
                 </div>
               </div>
               <div class="card team-card">
-                <span class="team-card__avatar" aria-hidden="true">J</span>
+                <span class="team-card__avatar" aria-hidden="true">JM</span>
                 <div>
-                  <h3>Jonathan</h3>
-                  <p class="team-card__role">Government Affairs Specialist</p>
-                  <p class="team-card__bio">Expert in Philippine government documentation and procedures.</p>
+                  <h3>Jared Mesa</h3>
+                  <p class="team-card__role">Lead Developer, Frontend &amp; Backend</p>
                 </div>
               </div>
               <div class="card team-card">
-                <span class="team-card__avatar" aria-hidden="true">MS</span>
+                <span class="team-card__avatar" aria-hidden="true">JA</span>
                 <div>
-                  <h3>Miguel Santos</h3>
-                  <p class="team-card__role">UX/UI Designer</p>
-                  <p class="team-card__bio">Creating seamless and intuitive user experiences for all.</p>
+                  <h3>Jonathan Niele Aduana</h3>
+                  <p class="team-card__role">Documentation Lead &amp; Tester</p>
+                </div>
+              </div>
+              <div class="card team-card">
+                <span class="team-card__avatar" aria-hidden="true">RS</span>
+                <div>
+                  <h3>Rommel Sambrano</h3>
+                  <p class="team-card__role">Documentation &amp; Quality Tester</p>
                 </div>
               </div>
             </div>
@@ -288,7 +288,7 @@
               <section class="card" aria-labelledby="about-questions-heading">
                 <h2 class="card__title" id="about-questions-heading">Have Questions?</h2>
 
-                <div class="card__body" data-message-form>
+                <div class="card__body" data-message-form data-message-source="about">
                   <form novalidate>
                     <div class="field">
                       <label class="field__label" for="about-question">Get in touch with our team:</label>
@@ -299,13 +299,16 @@
                         rows="4"
                         placeholder="Your message..."
                         aria-describedby="about-question-error"
-                        data-required-message="Enter your message before sending."
                       ></textarea>
                       <p class="field__error" id="about-question-error" hidden>
                         <span class="icon icon--sm" data-icon="circle-alert"></span>
                         <span data-error-text></span>
                       </p>
                     </div>
+                    <p class="form-alert" role="alert" hidden data-message-error>
+                      <span class="icon icon--sm" data-icon="circle-alert"></span>
+                      <span data-error-text></span>
+                    </p>
                     <div class="form-actions">
                       <button class="btn btn--primary btn--full" type="submit">
                         <span class="icon icon--sm" data-icon="send"></span>
@@ -318,7 +321,7 @@
                     <span class="icon" data-icon="circle-check"></span>
                     <div>
                       <p class="form-success__title">Thanks for reaching out!</p>
-                      <p class="form-success__text">Your message has been received.</p>
+                      <p class="form-success__text">Your message has been saved for our team to read.</p>
                       <button class="form-success__reset" type="button" data-message-reset>Send another message</button>
                     </div>
                   </div>
@@ -330,6 +333,7 @@
       </div>
     </main>
 
+    <!-- partial:footer -->
     <footer class="site-footer">
       <div class="container">
         <div class="site-footer__grid">
@@ -369,9 +373,11 @@
         </div>
       </div>
     </footer>
+    <!-- /partial:footer -->
 
     <script src="js/icons.js"></script>
     <script src="js/site.js"></script>
+    <script src="js/message-rules.js"></script>
     <script src="js/message-form.js"></script>
   </body>
 </html>

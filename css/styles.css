@@ -745,6 +745,29 @@ ol {
   margin-top: 1rem;
 }
 
+.form-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #fecaca;
+  border-radius: var(--radius-md);
+  background-color: #fef2f2;
+  color: var(--danger-text);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.form-alert .icon {
+  margin-top: 0.125rem;
+}
+
+.btn:disabled {
+  opacity: 0.65;
+  cursor: progress;
+}
+
 @media (min-width: 640px) {
   .input--narrow {
     max-width: 20rem;
