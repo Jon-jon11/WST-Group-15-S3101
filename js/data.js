@@ -101,11 +101,17 @@ function driversLicenseChecklist({ age, isFirstTime }) {
 
 function passportChecklist({ age, isFirstTime }) {
   const isMinor = age < 18
+  const isSenior = age >= 60
   const requirements = [
-    {
-      label: 'Confirmed Online Appointment',
-      detail: 'Printed appointment confirmation and accomplished application form.',
-    },
+    isSenior
+      ? {
+          label: 'Accomplished Application Form',
+          detail: 'Fill it out before your visit. No appointment confirmation is needed at the courtesy lane.',
+        }
+      : {
+          label: 'Confirmed Online Appointment',
+          detail: 'Printed appointment confirmation and accomplished application form.',
+        },
   ]
 
   if (isFirstTime) {
@@ -137,7 +143,7 @@ function passportChecklist({ age, isFirstTime }) {
   return {
     requirements,
     appointment:
-      age >= 60
+      isSenior
         ? { required: false, detail: 'Senior citizens may walk in through the DFA courtesy lane.' }
         : { required: true, detail: 'Book online at passport.gov.ph.' },
     fees: '₱950.00 (regular processing) or ₱1,200.00 (expedited processing)',
@@ -417,7 +423,11 @@ const DOCUMENT_TYPES = [
       },
     ],
     statusNotes: {
-      student: 'If you are under 21, you may already be covered as a dependent of a parent who is a PhilHealth member.',
+      student: function (profile) {
+        return profile.age < 21
+          ? 'You may already be covered as a dependent of a parent who is a PhilHealth member.'
+          : null
+      },
       employed:
         'Your employer usually handles PhilHealth registration and contributions. Ask your HR department for your PIN.',
       government:

@@ -14,7 +14,8 @@ function buildChecklist(profile) {
     return item.value === profile.status
   })
   const details = documentType.checklist(profile)
-  const statusNote = documentType.statusNotes[profile.status]
+  const rawStatusNote = documentType.statusNotes[profile.status]
+  const statusNote = typeof rawStatusNote === 'function' ? rawStatusNote(profile) : rawStatusNote
 
   return {
     documentType: documentType,

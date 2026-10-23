@@ -49,7 +49,7 @@ Scripts are loaded at the bottom of each page, and only the ones that page needs
 
 ## Editing Content
 
-**Requirements, fees, and guide steps** live in `js/data.js`. Each document has a `checklist` function that returns the requirements for a given age and applicant type, plus `steps` for its how-to guide and `statusNotes` for employment-specific tips. Both the checker and the guides page read from this file, so an edit there updates both.
+**Requirements, fees, and guide steps** live in `js/data.js`. Each document has a `checklist` function that returns the requirements for a given age and applicant type, plus `steps` for its how-to guide and `statusNotes` for employment-specific tips (a note can be a string, or a function of the profile that returns a string or `null` to hide it). Both the checker and the guides page read from this file, so an edit there updates both.
 
 **Colors and fonts** are CSS variables at the top of `css/styles.css`.
 
