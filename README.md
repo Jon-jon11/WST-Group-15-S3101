@@ -4,8 +4,6 @@ GovReady is a Government Document Requirement Checker for common Philippine IDs.
 
 WST Group 15 – S3101
 
-Built with plain HTML, CSS, and JavaScript. There is no framework, no build step, and no dependencies to install.
-
 ## Running the Site
 
 **Option 1 – open the file.** Double-click `index.html`, or open it in your browser. Everything works this way, including the checker.
