@@ -1,5 +1,5 @@
 /* GovReady server: serves the static site, stores submitted messages, and
-   stores edits to the text in js/data.js (requirements, fees, guide steps). */
+   stores edits to the text in public/js/data.js (requirements, fees, guide steps). */
 
 require('dotenv').config({ quiet: true })
 
@@ -9,9 +9,10 @@ const path = require('path')
 const express = require('express')
 
 /* The same rules the forms use in the browser. */
-const { validateSubmission } = require('./js/message-rules')
+const { validateSubmission } = require('./public/js/message-rules')
 
 const PORT = process.env.PORT || 3000
+const PUBLIC_DIR = path.join(__dirname, 'public')
 const ADMIN_TOKEN = process.env.ADMIN_TOKEN || ''
 const MESSAGES_FILE = process.env.MESSAGES_FILE || path.join(__dirname, 'data', 'messages.json')
 const CONTENT_FILE = process.env.CONTENT_FILE || path.join(__dirname, 'data', 'content.json')
@@ -174,7 +175,7 @@ app.get('/api/messages', adminLimit, requireAdmin, async function (request, resp
   }
 })
 
-/* Editable content: a map of original text (as written in js/data.js) to the
+/* Editable content: a map of original text (as written in public/js/data.js) to the
    replacement text. Everything not in the map keeps the text from data.js. */
 
 app.get('/api/content', async function (request, response, next) {
@@ -225,29 +226,18 @@ app.put('/api/content', adminLimit, requireAdmin, express.json({ limit: '10kb' }
   }
 })
 
-/* Static files: only the public site is served, never server.js, data/, or
-   package.json. */
+/* Static files: only the public/ folder is served (the website itself). The
+   server code, package.json, data/, partials/, scripts/, and test/ sit outside
+   it, so they can never be downloaded. */
 
-app.use('/css', express.static(path.join(__dirname, 'css')))
-app.use('/js', express.static(path.join(__dirname, 'js')))
-app.use('/assets', express.static(path.join(__dirname, 'assets')))
-
-app.get('/', function (request, response) {
-  response.sendFile(path.join(__dirname, 'index.html'))
-})
-
-app.get(/^\/[\w-]+\.(html|ico|png)$/, function (request, response, next) {
-  response.sendFile(path.join(__dirname, request.path), function (error) {
-    if (error) next()
-  })
-})
+app.use(express.static(PUBLIC_DIR))
 
 app.use('/api', function (request, response) {
   response.status(404).json({ error: 'Not found.' })
 })
 
 app.use(function (request, response) {
-  response.status(404).sendFile(path.join(__dirname, '404.html'))
+  response.status(404).sendFile(path.join(PUBLIC_DIR, '404.html'))
 })
 
 app.use(function (error, request, response, next) {

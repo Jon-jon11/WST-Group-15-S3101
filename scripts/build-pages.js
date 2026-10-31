@@ -1,18 +1,19 @@
 /* Copies the shared header and footer from partials/ into every page.
 
    The header and footer used to be pasted into each HTML file by hand. Now they
-   live once in partials/, and this script writes them between the
+   live once in partials/, and this script writes them into the pages in public/ between the
    <!-- partial:... --> markers in each page. The pages stay complete HTML files,
    so the site still works when a page is opened directly.
 
      npm run build          update every page
-     npm run build:check    exit with an error if a page is out of date (also run by npm test)
+     npm run build:check    exit with an error if a page is out of date
 */
 
 const fs = require('fs')
 const path = require('path')
 
 const root = path.join(__dirname, '..')
+const pagesDir = path.join(root, 'public')
 const PARTIALS = ['header', 'footer']
 
 function readPartial(name) {
@@ -55,7 +56,7 @@ function render(html, fileName) {
 }
 
 function pageFiles() {
-  return fs.readdirSync(root).filter(function (file) {
+  return fs.readdirSync(pagesDir).filter(function (file) {
     return file.endsWith('.html')
   })
 }
@@ -63,7 +64,7 @@ function pageFiles() {
 /* Returns the pages whose header or footer does not match the partials. */
 function outOfDatePages() {
   return pageFiles().filter(function (file) {
-    const html = fs.readFileSync(path.join(root, file), 'utf8')
+    const html = fs.readFileSync(path.join(pagesDir, file), 'utf8')
     return render(html, file) !== html
   })
 }
@@ -72,7 +73,7 @@ function build() {
   const updated = []
 
   pageFiles().forEach(function (file) {
-    const filePath = path.join(root, file)
+    const filePath = path.join(pagesDir, file)
     const html = fs.readFileSync(filePath, 'utf8')
     const next = render(html, file)
 

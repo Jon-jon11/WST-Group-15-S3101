@@ -44,6 +44,9 @@ function setupMessageForm(container) {
   const inputs = Array.from(form.querySelectorAll('input, textarea'))
   const source = container.dataset.messageSource
 
+  /* Focus moves here after a message is sent, so keyboard and screen reader users land on the confirmation. */
+  success.setAttribute('tabindex', '-1')
+
   function showAlert(message) {
     alertBox.querySelector('[data-error-text]').textContent = message || ''
     alertBox.hidden = !message
@@ -92,6 +95,8 @@ function setupMessageForm(container) {
       return
     }
 
+    const hadFocus = document.activeElement === submitButton
+
     setSending(true)
 
     sendMessage(source, values)
@@ -100,6 +105,7 @@ function setupMessageForm(container) {
           form.reset()
           form.hidden = true
           success.hidden = false
+          success.focus()
           return
         }
 
@@ -124,6 +130,9 @@ function setupMessageForm(container) {
       })
       .then(function () {
         setSending(false)
+
+        /* A disabled button drops keyboard focus; put it back so the person can retry. */
+        if (hadFocus && !form.hidden) submitButton.focus()
       })
   })
 

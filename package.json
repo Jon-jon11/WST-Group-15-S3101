@@ -8,7 +8,8 @@
     "start": "node server.js",
     "test": "node --test",
     "build": "node scripts/build-pages.js",
-    "build:check": "node scripts/build-pages.js --check"
+    "build:check": "node scripts/build-pages.js --check",
+    "test:ui": "node scripts/run-tests.js"
   },
   "engines": {
     "node": ">=18"

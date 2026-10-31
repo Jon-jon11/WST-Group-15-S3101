@@ -12,6 +12,9 @@ const editorList = document.getElementById('editor-list')
 const filterInput = document.getElementById('admin-filter')
 const summary = document.getElementById('admin-summary')
 const lockButton = document.getElementById('lock-button')
+const editorHeading = document.getElementById('editor-heading')
+
+editorHeading.setAttribute('tabindex', '-1')
 
 let adminToken = ''
 
@@ -107,8 +110,27 @@ function currentText(text) {
 
 /* Talking to the server --------------------------------------------------- */
 
+const REQUEST_TIMEOUT_MS = 8000
+const UNREACHABLE_MESSAGE = 'Could not reach the server. Make sure it is running, then try again.'
+
+/* fetch with a timeout, and a plain-language error when the server cannot be reached. */
+function request(url, options) {
+  const controller = new AbortController()
+  const timeout = setTimeout(function () {
+    controller.abort()
+  }, REQUEST_TIMEOUT_MS)
+
+  return fetch(url, Object.assign({ signal: controller.signal }, options))
+    .catch(function () {
+      throw new Error(UNREACHABLE_MESSAGE)
+    })
+    .finally(function () {
+      clearTimeout(timeout)
+    })
+}
+
 function saveEdit(original, replacement) {
-  return fetch('/api/content', {
+  return request('/api/content', {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + adminToken },
     body: JSON.stringify({ original: original, replacement: replacement }),
@@ -131,7 +153,7 @@ function saveEdit(original, replacement) {
 }
 
 function checkToken(token) {
-  return fetch('/api/admin/check', { headers: { Authorization: 'Bearer ' + token } }).then(function (response) {
+  return request('/api/admin/check', { headers: { Authorization: 'Bearer ' + token } }).then(function (response) {
     if (response.status === 204) return
     if (response.status === 429) throw new Error('Too many attempts. Please wait a minute and try again.')
     throw new Error('That token was not accepted. Check the ADMIN_TOKEN in your .env file.')
@@ -206,7 +228,16 @@ function itemMarkup(item) {
     updateSummary()
   }
 
-  function submit(replacement) {
+  /* Disabling a button drops keyboard focus, so give it back afterwards. A Reset
+     button hides itself once the edit is reset, so focus moves to the Save button. */
+  function restoreFocus(trigger) {
+    if (trigger.hidden) trigger = saveButton
+    trigger.focus()
+  }
+
+  function submit(replacement, trigger) {
+    const hadFocus = document.activeElement === trigger
+
     status.textContent = 'Saving...'
     setBusy(true)
 
@@ -221,15 +252,16 @@ function itemMarkup(item) {
       })
       .then(function () {
         setBusy(false)
+        if (hadFocus) restoreFocus(trigger)
       })
   }
 
   saveButton.addEventListener('click', function () {
-    submit(textarea.value)
+    submit(textarea.value, saveButton)
   })
 
   resetButton.addEventListener('click', function () {
-    submit(item.text)
+    submit(item.text, resetButton)
   })
 
   actions.appendChild(saveButton)
@@ -307,6 +339,9 @@ function showEditor() {
   unlockSection.hidden = true
   editorSection.hidden = false
   renderEditor()
+
+  /* The token field just disappeared, so move focus to the editor's heading. */
+  editorHeading.focus()
 }
 
 function lock(message) {
