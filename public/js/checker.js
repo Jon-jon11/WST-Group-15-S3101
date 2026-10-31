@@ -183,6 +183,12 @@ checkerForm.addEventListener('submit', function (event) {
   const errors = validateChecker()
   showCheckerErrors(errors)
 
+  /* A checklist from an earlier answer must not stay on screen next to a form that now has errors. */
+  if (errors.age || errors.firstTime) {
+    resultsBody.innerHTML = emptyStateMarkup
+    renderIcons(resultsBody)
+  }
+
   if (errors.age) {
     ageInput.focus()
     return
